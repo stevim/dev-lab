@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Express Students</title>
+</head>
+<body>
+  <h1>Students as of <%= time %></h1>
+  <ul>
+    <% students.forEach(student => { %>
+      <li>
+        <form action="/students/<%= student._id %>?_method=DELETE" class="delete-form" method="POST">
+          <button type="submit">X</button>
+        </form>
+				<a href="/students/<%= student._id %>"><%= student.text %></a> 
+				- 
+				<%= student.enrolled ? 'enrolled' : 'not enrolled' %>
+			</li>
+    <% }) %>
+  </ul>
+  <a href="/students/new">Add Student</a>
+</body>
+</html>
